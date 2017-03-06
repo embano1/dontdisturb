@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
 	"os"
 	"os/exec"
 	"os/signal"
@@ -43,17 +42,18 @@ func main() {
 
 func enableDND() {
 	fmt.Printf("Turning on \"Do not disturb\" mode for %d minutes \n", min)
+
+	// we don´t do error checking
 	_, _ = exec.Command("sh", "-c", "defaults -currentHost write ~/Library/Preferences/ByHost/com.apple.notificationcenterui doNotDisturb -boolean true").Output()
-	_, err := exec.Command("sh", "-c", "defaults -currentHost write ~/Library/Preferences/ByHost/com.apple.notificationcenterui doNotDisturbDate -date \"`date -u +\"%Y-%m-%d %H:%M:%S +000\"`\"").Output()
-	if err != nil {
-		log.Fatal("2", err)
-	}
+	_, _ = exec.Command("sh", "-c", "defaults -currentHost write ~/Library/Preferences/ByHost/com.apple.notificationcenterui doNotDisturbDate -date \"`date -u +\"%Y-%m-%d %H:%M:%S +000\"`\"").Output()
 	_, _ = exec.Command("sh", "-c", "killall NotificationCenter").Output()
 
 }
 
 func disableDND() {
+	// we don´t do error checking
 	_, _ = exec.Command("sh", "-c", "defaults -currentHost write ~/Library/Preferences/ByHost/com.apple.notificationcenterui doNotDisturb -boolean false").Output()
 	_, _ = exec.Command("sh", "-c", "killall NotificationCenter").Output()
+
 	fmt.Println("Turning off \"Do not disturb\" mode")
 }
