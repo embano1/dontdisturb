@@ -1,6 +1,6 @@
 # goreleaser.yml
 # Build customization
 build:
-  binary_name: dontdisturb
+  binary: dontdisturb
   goos:
     - darwin
