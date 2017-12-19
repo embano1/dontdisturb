@@ -4,11 +4,11 @@ Small program to enable "Do not disturb" mode on **OSX** for X minutes,
 since OSX only allows for setting this for the rest of the day.
 
 ## Install
-# Use a Release
+### Use a Release
 
 Grab the latest release from [here](https://github.com/embano1/dontdisturb/releases).
 
-# Build from Source
+### Build from Source
 
 `go get -u github.com/embano1/dontdisturb`
 
